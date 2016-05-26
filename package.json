@@ -1,0 +1,23 @@
+{
+  "name": "smartmirror-digital-clock",
+  "version": "1.0.0",
+  "description": "SmartMirror digital clock module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "smartmirror",
+    "clock",
+    "digital"
+  ],
+  "author": "Matthias Schmidt",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
+  },
+  "smartmirror": {
+
+  }
+}

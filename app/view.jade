@@ -1,0 +1,9 @@
+script.
+    function clock() {
+        var currentTime = new Date();
+        document.getElementById("time").innerHTML = currentTime.toLocaleTimeString();
+        document.getElementById("date").innerHTML = currentTime.toLocaleDateString();
+    }
+    var checkTime = setInterval(clock, 1000);
+p#time
+p#date
