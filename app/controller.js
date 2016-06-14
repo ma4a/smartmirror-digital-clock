@@ -4,6 +4,7 @@ var jade = require('jade'); // optional
 
 exports.get = (params) => {
 
-    return null;
-
+  return new Promise((resolve, reject) => {
+    resolve();
+  });
 };
