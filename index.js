@@ -2,6 +2,7 @@
 
 var express = require('express');
 var app = express();
+var fs = require('fs');
 
 var controller = require('./app/controller');
 
@@ -9,9 +10,28 @@ app.set('views', __dirname);
 app.set('view engine', 'jade');
 
 app.get('/', function (req, res) {
-    res.render('app/view.jade', {});
+
+  let pckg = fs.readFileSync('package.json');
+  pckg = JSON.parse(pckg);
+
+  let params = {};
+  params.data = true;
+  let widget = {};
+  widget._id = '1234567890';
+  widget.size = pckg.smartmirror.size[0];
+
+  controller.get(params)
+    .then(() => {
+      res.render('./index.jade', {
+        widget: widget,
+      });
+    })
+    .catch((err) => {
+      console.dir(err);
+      res.status(500).send(err);
+    });
 });
 
 app.listen(8080, function () {
-    console.log('Example app listening on port 8080!');
+  console.log('Example app listening on port 8080!');
 });
