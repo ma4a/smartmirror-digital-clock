@@ -1,11 +1,32 @@
-p#time
-p#date
+style(type='text/css').
+  #widget-#{widget._id} {
+    text-align: center;
+  }
+
+  #widget-#{widget._id} .time{
+    font-size: 96px;
+    display: block;
+  }
+
+  #widget-#{widget._id} .date{
+    font-size: 64px;
+    display: block;
+  }
+
+
+time.time
+time.date
 
 script.
+  var module = document.getElementById('widget-#{widget._id}'),
+      timeEl = module.querySelector('.time'),
+      dateEl = module.querySelector('.date');
+
   function clock() {
     var currentTime = new Date();
-    document.getElementById("time").innerHTML = currentTime.toLocaleTimeString();
-    document.getElementById("date").innerHTML = currentTime.toLocaleDateString();
+    timeEl.innerHTML = currentTime.toLocaleTimeString();
+    dateEl.innerHTML = currentTime.toLocaleDateString();
   }
   clock();
+
   var checkTime = setInterval(clock, 1000);
