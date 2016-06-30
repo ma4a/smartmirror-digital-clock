@@ -13,18 +13,35 @@ style(type='text/css').
     display: block;
   }
 
+  #widget-#{widget._id} span.hours,
+  #widget-#{widget._id} span.minutes,
+  #widget-#{widget._id} span.seconds {
+    width: 1.3em;
+    display: inline-block;
+  }
+
 
 time.time
+  span.hours
+  span :
+  span.minutes
+  span :
+  span.seconds
 time.date
 
 script.
   var module = document.getElementById('widget-#{widget._id}'),
       timeEl = module.querySelector('.time'),
+      hoursEl = timeEl.querySelector('.hours'),
+      minutesEl = timeEl.querySelector('.minutes'),
+      secondsEl = timeEl.querySelector('.seconds'),
       dateEl = module.querySelector('.date');
 
   function clock() {
     var currentTime = new Date();
-    timeEl.innerHTML = currentTime.toLocaleTimeString();
+    hoursEl.textContent = currentTime.getHours();
+    minutesEl.textContent = (currentTime.getMinutes() < 10 ? '0' : '') + currentTime.getMinutes();
+    secondsEl.textContent = (currentTime.getSeconds() < 10 ? '0' : '') + currentTime.getSeconds();
     dateEl.innerHTML = currentTime.toLocaleDateString();
   }
   clock();
